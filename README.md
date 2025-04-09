@@ -1,4 +1,4 @@
-# GA4 ETL Pipeline
+# Google Analytics4 ETL Pipeline
 
 ## Overview
 This project showcases my **ETL (Extract, Transform, Load)** skills by building a pipeline that processes Google Analytics 4 (GA4) campaign data for business analysis. I extract data from GA4 using API requests, transform it with Python, and load the results into SQL Server for reporting and dashboard use. This pipeline streamlines the process of preparing GA4 data, enabling stakeholders to analyze campaign performance efficiently.
