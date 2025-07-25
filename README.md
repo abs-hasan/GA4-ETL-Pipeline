@@ -81,6 +81,32 @@ The pipeline produces a dataset with the following structure, ready for use in d
 ---
 
 
+
+## 🧠 Skills Demonstrated
+
+| Category | Highlights |
+|---------|------------|
+| **Data Engineering** | SQL extraction, pyodbc, Airflow scheduling |
+| **ETL & Automation** | End-to-end DAG orchestration with retry logic |
+| **Data Transformation** | Pandas filtering, grouping, scoring, enrichment |
+| **External Integrations** | Google Sheets API, Salesforce Python SDK |
+| **Cloud & Secrets** | Airflow `BaseHook` for connection security |
+| **Code Quality** | Modular functions, clear naming, exception handling |
+| **Real-World Use Case** | Referral pipeline from CRM to executive scorecard |
+
+
+## 🛠 Architecture Overview
+
+```mermaid
+graph TD;
+    A[SQL Server<br>Opportunity + Partner Tables] --> B[Python<br>(Pandas ETL)];
+    B --> C[Filtered + Enriched DataFrame];
+    C --> D[Score Calculation<br>+ Stage Breakdown];
+    D --> E[Google Sheets];
+    D --> F[Salesforce API<br>Score Update];
+    A -->|Airflow DAG Trigger| B;
+
+
 ## Setup and Usage
 1. **Install Dependencies**:
    - Ensure you have Python installed.
