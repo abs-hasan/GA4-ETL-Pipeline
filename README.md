@@ -8,38 +8,78 @@
 
 A **production-ready ETL pipeline** that extracts daily **channel-level campaign data** from **Google Analytics 4 (GA4)**, transforms it using **Python (Pandas)**, and loads it into **SQL Server** — ready for analysis, dashboards, and business decisions.
 
-## Overview
+## 🚀 Project Overview
 This project showcases my **ETL (Extract, Transform, Load)** skills by building a pipeline that processes Google Analytics 4 (GA4) campaign data for business analysis. I extract data from GA4 using API requests, transform it with Python, and load the results into SQL Server for reporting and dashboard use. This pipeline streamlines the process of preparing GA4 data, enabling stakeholders to analyze campaign performance efficiently.
 
-## Motivation
-In my role as a data scientist, I identified the need to automate the collection and processing of GA4 campaign data, which was previously done using a third-party tool. That tool required a monthly subscription fee and was time-consuming to manage. I built this pipeline to eliminate the subscription cost, save time, and reduce errors, providing a reliable data source for marketing analytics and supporting better decision-making for campaign optimization.
 
-## What It Does
-- **Extract**: Pulls campaign data (e.g., users, ad costs) from GA4 using API requests over a 10-day period.
-- **Transform**: Processes the data with Python (pandas) by:
-  - Converting data types (e.g., dates, numeric values).
-  - Calculating daily channel percentages for costs and users.
-  - Renaming columns for consistency.
-- **Load**: Upserts the transformed data into SQL Server, ensuring existing records are updated and new ones are inserted.
+## 🎯 Business Use Case
+
+In my role as a Data Scientist, I noticed our team was paying for a third-party tool to export GA4 data. It was:
+- 💰 Costly (monthly subscription)
+- 🕒 Time-consuming
+- ⚠️ Prone to human error
+
+I built this pipeline to replace that tool — saving money, reducing overhead, and providing **clean, analysis-ready data** for channel performance reporting.
+
+
+
+## 🧩 What This Pipeline Does
+
+### 🔄 Extract
+
+- Authenticates and queries the **GA4 Reporting API**
+- Pulls metrics over the **last 10 days**
+- Metrics: `totalUsers`, `advertiserAdCost`
+- Dimensions: `date`, `firstUserDefaultChannelGroup`
+
+---
+
+### 🛠️ Transform
+
+- Renames columns to business-friendly names
+- Converts `date`, `cost`, and `user` fields to proper types
+- Computes:
+  - `CostPercentage` → share of daily ad cost per channel
+  - `UserPercentage` → share of daily users per channel
+
+---
+
+### 💾 Load
+
+- **Upserts** data into SQL Server:
+  - Checks if the row exists (by date & channel)
+  - Updates if found, inserts if new
+
+---
+
+
+## 📊 Example Output
+The pipeline produces a dataset with the following structure, ready for use in dashboards or reports:
+
+| Date       | Channel                 | Users | Cost   | Cost % | Users % |
+|------------|--------------------------|-------|--------|--------|---------|
+| 2025-04-01 | Organic Search           | 1500  | 500.00 | 25.00  | 30.00   |
+| 2025-04-01 | Paid Search              | 2000  | 1000.0 | 50.00  | 40.00   |
+| 2025-04-01 | Direct                   | 1000  | 500.00 | 25.00  | 30.00   |
+
+---
 
 ## Why It’s Useful
 - **Time-Saving Automation**: Eliminates manual data collection, saving hours of work each week.
 - **Accurate Insights**: Provides clean, transformed data for reporting and analysis.
 - **Scalable Solution**: Can be integrated into larger workflows or scheduled for regular updates.
 
-## Sample Output
-The pipeline produces a dataset with the following structure, ready for use in dashboards or reports:
 
-| Date       | FirstUserDefaultChannelGroup | TotalUsers | AdvertiserAdCost | CostPercentage | UserPercentage |
-|------------|------------------------------|------------|------------------|----------------|----------------|
-| 2025-04-01 | Organic Search               | 1500       | 500.00           | 25.0           | 30.0           |
-| 2025-04-01 | Paid Search                  | 2000       | 1000.00          | 50.0           | 40.0           |
-| 2025-04-01 | Direct                       | 1000       | 500.00           | 25.0           | 20.0           |
+## 🧰 Tech Stack
 
-## Tools Used
-- **Python**: For data extraction and transformation (pandas).
-- **GA4 API**: To extract campaign data.
-- **SQL Server**: To store the processed data.
+- **Python** – ETL logic and transformation
+- **Google Analytics Data API (GA4)** – Source data
+- **Pandas** – Data wrangling and feature engineering
+- **SQL Server** – Target data store (upsert strategy)
+- **Airflow (optional)** – Orchestration and scheduling
+
+---
+
 
 ## Setup and Usage
 1. **Install Dependencies**:
