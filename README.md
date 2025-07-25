@@ -3,6 +3,7 @@
 ![GA4](https://img.shields.io/badge/GA4-Analytics-yellow)
 ![SQL%20Server](https://img.shields.io/badge/SQL-Server-informational)
 
+
 # 📊 GA4 Channel Cost ETL Pipeline (Python + SQL Server + Airflow)
 
 A **production-ready ETL pipeline** that extracts daily **channel-level campaign data** from **Google Analytics 4 (GA4)**, transforms it using **Python (Pandas)**, and loads it into **SQL Server** — ready for analysis, dashboards, and business decisions.
