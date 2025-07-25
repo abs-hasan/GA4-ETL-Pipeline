@@ -1,4 +1,11 @@
-# Google Analytics4 ETL Pipeline
+![Python](https://img.shields.io/badge/Python-3.9+-blue)
+![Airflow](https://img.shields.io/badge/Airflow-ETL-green)
+![GA4](https://img.shields.io/badge/GA4-Analytics-yellow)
+![SQL%20Server](https://img.shields.io/badge/SQL-Server-informational)
+
+# 📊 GA4 Channel Cost ETL Pipeline (Python + SQL Server + Airflow)
+
+A **production-ready ETL pipeline** that extracts daily **channel-level campaign data** from **Google Analytics 4 (GA4)**, transforms it using **Python (Pandas)**, and loads it into **SQL Server** — ready for analysis, dashboards, and business decisions.
 
 ## Overview
 This project showcases my **ETL (Extract, Transform, Load)** skills by building a pipeline that processes Google Analytics 4 (GA4) campaign data for business analysis. I extract data from GA4 using API requests, transform it with Python, and load the results into SQL Server for reporting and dashboard use. This pipeline streamlines the process of preparing GA4 data, enabling stakeholders to analyze campaign performance efficiently.
